@@ -3,8 +3,11 @@ import { SimulationService } from './simulation.service';
 
 @Injectable({ providedIn: 'root' })
 export class MonitorService {
-  constructor(private sim: SimulationService) {}
-  start() {
-    setInterval(() => { console.clear(); this.sim.printStatus(); }, 2000);
-  }
+    constructor(private sim: SimulationService) { }
+    start() {
+        setInterval(() => {
+            console.clear();
+            this.sim.printStatus();
+        }, 2000);
+    }
 }

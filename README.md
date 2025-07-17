@@ -1,6 +1,10 @@
 # CollegeSimulationChallenge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+This is an Angular powered app which simulates the activities of a college. App helps us to visualise the various thread processes running in the college.
+
+You can access the live version of the application which is hosted on Vercel at [https://college-simulation-challenge.vercel.app/](https://college-simulation-challenge.vercel.app/)
+
+The project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
 
 ## Development server
 
@@ -12,48 +16,20 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Local development with Docker
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+In case you have a different Angular version installed on your local computer or just don't want to install dependencies on your computer which can be very messy sometimes, you can as well run the project in a Docker container. I personally recommend this option. Assumming you have Docker Desktop installed and it's running, run:
 
 ```bash
-ng generate --help
+docker compose watch
 ```
 
-## Building
+Docker will then create a virtual environment (container) and installs all the JS packages needed by the application, start the development server inside the container and expose port 4200 and you can then access the running application on your web browser at `http://localhost:4200/`
+The application will automatically reload whenever you modify any of the source files.
 
-To build the project run:
+### How to use the app
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+It's very simple.
+- The running app displays a control panel at the top-left corner from which you can manipulate the simulation. You can manually populate the classrooms by clicking "Add Student", "Add Visitor" or "Add Lecturer" or make the simulation run automatically by clicking "▶️ Start" at the top-left corner, click "⏹ Stop" to stop the auto simulation. When in auto simulation mode, the system continuously adds students, visitors and lecturers to the classrooms and you can just watch or intervene manually if you wish.
+- The Live Updates panel shows live text updates of all the actions taking place.
+- At the bottom, you can see a visual representation of the classrooms at any point in time.

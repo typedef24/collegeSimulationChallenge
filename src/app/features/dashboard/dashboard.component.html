@@ -1,0 +1,17 @@
+<div class="top-grid">
+    <app-control-panel></app-control-panel>
+    <div style="flex: 1;">
+        <p><strong>Occupants = </strong> Students & Visitors</p>
+        <p class="occupantIndicator"><i class="student"></i> = Student</p>
+        <p class="occupantIndicator"><i class="visitor"></i> = Visitor</p>
+        <div class="card">
+            <h3 class="card-header">Live Updates</h3>
+            <div #scrollContainer class="card-body">
+                <p *ngFor="let update of liveUpdates" [style.color]="update.isError ? 'red' : ''">{{ update.message }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid">
+    <app-classroom *ngFor="let room of sim.classrooms" [room]="room"></app-classroom>
+</div>

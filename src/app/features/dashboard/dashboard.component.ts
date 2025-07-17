@@ -1,21 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { SimulationService } from '../../core/simulation/simulation.service';
 import { ControlPanelComponent } from '../control-panel/control-panel.component';
 import { ClassroomComponent } from '../classroom/classroom.component';
+import { LiveUpdates } from '../../core/models/live-updates.model';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [NgFor, ControlPanelComponent, ClassroomComponent],
-  template: `
-    <app-control-panel></app-control-panel>
-    <div class="grid">
-      <app-classroom *ngFor="let room of sim.classrooms" [room]="room"></app-classroom>
-    </div>
-  `,
-  styles: [`.grid { display: flex; flex-wrap: wrap; }`]
+    selector: 'app-dashboard',
+    standalone: true,
+    imports: [NgFor, ControlPanelComponent, ClassroomComponent],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  constructor(public sim: SimulationService) {}
+    liveUpdates: LiveUpdates[] = [];
+    constructor(public sim: SimulationService) {
+        this.liveUpdates = sim.liveUpdates;
+    }
+
+    // Code to make live updates scrollable
+    // This will ensure that the live updates section scrolls to the bottom when new updates are added
+    // This is useful for real-time updates in the dashboard
+    @ViewChild('scrollContainer') scrollContainer!: ElementRef;
+
+    ngAfterViewChecked() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom(): void {
+        const element = this.scrollContainer.nativeElement;
+        element.scrollTop = element.scrollHeight;
+    }
 }

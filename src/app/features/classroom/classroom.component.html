@@ -1,0 +1,16 @@
+<div class="card">
+    <h3 class="card-header">{{room.name}} ({{room.capacity}})</h3>
+    <div class="card-body">
+        <p><strong>Lecturer:</strong> {{room.lecturer || 'None'}}</p>
+        <p>
+            <strong>Lecture Going On: </strong>
+            <span [class.on]="room.lectureRunning">{{room.lectureRunning ? '✅' : '❌'}}</span>
+        </p>
+        <p><strong>Occupants:</strong> {{room.occupants.length}} {{ occupantsComment }}</p>
+        <div class="occupants">
+            <span *ngFor="let o of room.occupants" [title]="o.status">
+                <i [ngClass]="{ student: o.type === 'student', visitor: o.type === 'visitor' }"></i>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-grid {
+    display: flex;
+    //flex-wrap: wrap;
+}
+
+.occupantIndicator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+i {
+    display: inline-block; // override general style
+    margin-right: 5px; // space between icon and text
+}
+
+.card {
+    border: 2px solid black;
+    margin-inline: 5px;
+    border-radius: 5px;
+    background-color: rgb(25, 25, 25);
+    color: white;
+}
+
+.card-body {
+    padding-inline: 10px;
+    padding-block: 0px;
+    max-height: 34vh; // limit height to prevent overflow
+    overflow-y: auto; // enable scrolling if content exceeds height
+}
+
+.card-header {
+    background-color: black;
+    color: rgb(5, 176, 244);
+    padding-inline: 10px;
+    padding-top: 5px;
+    margin-block: 0px;
+}
